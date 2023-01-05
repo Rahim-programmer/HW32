@@ -11,10 +11,10 @@ public class Product {
     private static final Random random = new Random();
     private int price;
     private static final List<String> userId = new ArrayList<>();
-    private static final List<String> LIST = List.of("B","C", "D","E","F","G","I");
+    private static final List<String> LIST = List.of("B", "C", "D", "E", "F", "G", "I");
 
     private static final List<String> userNames = new ArrayList<>();
-    private static final List<String> names = List.of("Скителс","Кока-Кола", "Фанта","Миринда", "Пепси","Марс","Баунти","Пончики","Кофе","Ход-дог","Семечки","Печенья");
+    private static final List<String> names = List.of("Скителс", "Кока-Кола", "Фанта", "Миринда", "Пепси", "Марс", "Баунти", "Пончики", "Кофе", "Ход-дог", "Семечки", "Печенья");
 
     public String getId() {
         return id;
@@ -41,12 +41,43 @@ public class Product {
         name = getRandomName(names.get(random.nextInt(names.size())));
         price = getRandomPrice();
     }
-    public static List<Product> makeProduct(int amont){
+
+    public static List<Product> makeProduct(int amont) {
         return Stream.generate(Product::new)
                 .limit(amont)
                 .sorted(Comparator.comparing(Product::getPrice))
                 .collect(Collectors.toList());
     }
-    public int getRandomId(String id){
 
+    public String getRandomId(String id) {
+        if (userId.contains(id)) {
+            return getRandomId(LIST.get(random.nextInt()));
+        }
+        userId.add(id);
+        return id;
+    }
+
+    public String getRandomName(String name) {
+        if (userNames.contains(name)) {
+            return getRandomId(names.get(random.nextInt(names.size())));
+        }
+        userNames.add(name);
+        return name;
+    }
+
+    public int getRandomPrice() {
+        int randomValue = random.nextInt(251);
+        if (randomValue % 5 == 0) {
+            return randomValue;
+        }
+        return getRandomPrice();
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

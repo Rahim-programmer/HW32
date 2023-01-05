@@ -1,3 +1,5 @@
+import java.util.stream.Collectors;
+
 public class VendingMachine {
     private int money;
     private boolean work;
@@ -12,6 +14,11 @@ public class VendingMachine {
     }
     public static void closeMachine(){
         setWork(false);
+    }
+    public VendingMachine(){
+        product = Product.makeProduct(5).stream()
+                .collect(toMap(Product::getId, product - > product));
+        work = true;
     }
 }
 
