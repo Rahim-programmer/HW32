@@ -5,13 +5,16 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.toList;
+
 public class Product {
     private String id;
     private String name;
     private static final Random random = new Random();
     private int price;
     private static final List<String> userId = new ArrayList<>();
-    private static final List<String> LIST = List.of("B", "C", "D", "E", "F", "G", "I");
+    private static final List<String> LIST = List.of("1", "2", "3", "4", "5", "6", "7","8","9");
 
     private static final List<String> userNames = new ArrayList<>();
     private static final List<String> names = List.of("Скителс", "Кока-Кола", "Фанта", "Миринда", "Пепси", "Марс", "Баунти", "Пончики", "Кофе", "Ход-дог", "Семечки", "Печенья");
@@ -42,16 +45,16 @@ public class Product {
         price = getRandomPrice();
     }
 
-    public static List<Product> makeProduct(int amont) {
+    public static List<Product> makeProduct(int amount) {
         return Stream.generate(Product::new)
-                .limit(amont)
-                .sorted(Comparator.comparing(Product::getPrice))
-                .collect(Collectors.toList());
+                .limit(amount)
+                .sorted(comparing(Product::getPrice).reversed())
+                .collect(toList());
     }
 
     public String getRandomId(String id) {
         if (userId.contains(id)) {
-            return getRandomId(LIST.get(random.nextInt()));
+            return getRandomId(LIST.get(random.nextInt(LIST.size())));
         }
         userId.add(id);
         return id;
