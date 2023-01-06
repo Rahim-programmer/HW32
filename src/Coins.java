@@ -1,7 +1,7 @@
 public enum Coins {
     FIFTY(50),
-    SEVENTY(70),
-    NINETY(90);
+    TWENTY(20),
+    HUNDRED(100);
 
 private int value;
 

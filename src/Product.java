@@ -69,7 +69,7 @@ public class Product {
     }
 
     public int getRandomPrice() {
-        int randomValue = random.nextInt(251);
+        int randomValue = random.nextInt(200)+50;
         if (randomValue % 5 == 0) {
             return randomValue;
         }

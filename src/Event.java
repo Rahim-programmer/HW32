@@ -3,12 +3,12 @@ import java.util.Scanner;
 
 public enum Event {
 
-    ADD_COIN("Закинуть еще монет"){
+    ADD_COIN("Закинуть еще денег"){
         @Override
         public void run(VendingMachine machine, String productId) {
             String choose;
-            System.out.println("Выберите какую монетку положить:");
-            var coins = Map.of("1", Coins.FIFTY, "2", Coins.SEVENTY, "3", Coins.NINETY);
+            System.out.println("Выберите какую купюру положить:");
+            var coins = Map.of("1", Coins.FIFTY, "2", Coins.TWENTY, "3", Coins.HUNDRED);
             coins.forEach((number, coin) -> {
                 System.out.printf("%s - %s сом\n", number, coin.getValue());
             });

@@ -26,7 +26,7 @@ public class Main {
                 machine.getProductList().forEach((k, v) -> {
                     System.out.printf("[%d] - %s\n", v.getPrice(), v.getName());
                 });
-                System.out.println("Монет на сумму - " + machine.getMoney());
+                System.out.println("Денег на сумму - " + machine.getMoney());
                 events();
             }else {
                 System.out.println("В автомате отсутствуют товары, приходите завтра!");
