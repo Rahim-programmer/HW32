@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public enum Event {
 
-    ADD_COIN("Закинуть еще денег"){
+    ADD_COIN("Положить еще денег"){
         @Override
         public void run(VendingMachine machine, String productId) {
             String choose;

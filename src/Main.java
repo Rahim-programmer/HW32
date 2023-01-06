@@ -22,7 +22,7 @@ public class Main {
     public static void main(String[] args) {
         while (machine.isWork()) {
             if(machine.getProductList().size() > 0){
-                System.out.println("В автомате доступны:");
+                System.out.println("\nВ автомате доступны:");
                 machine.getProductList().forEach((k, v) -> {
                     System.out.printf("[%d] - %s\n", v.getPrice(), v.getName());
                 });
@@ -37,7 +37,7 @@ public class Main {
     }
     public static void events(){
         String action;
-        System.out.println("Что хотите сделать:");
+        System.out.println("\nЧто хотите сделать:");
         System.out.printf("a - %s\n", eventMap.get("a").getValue());
 
         machine.getProductList().entrySet()
@@ -67,6 +67,5 @@ public class Main {
         }else {
             System.out.println("Такого действия/товара нету!");
         }
-
     }
 }
